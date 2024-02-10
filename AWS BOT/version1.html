@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Reservation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"], input[type="date"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        (function(d, m){
+            var kommunicateSettings = 
+                {"appId":"1375de4497e2502f760d1027e19727867","popupWidget":true,"automaticChatOpenOnNavigation":true};
+            var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+            s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+            var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+            window.kommunicate = m; m._globals = kommunicateSettings;
+        })(document, window.kommunicate || {});
+    /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+    </script>
+
+<div class="container">
+    <h1>Hotel Reservation</h1>
+    <form id="reservation-form">
+        <label for="location">Location:</label>
+        <select id="location" name="location" required>
+            <option value="">Select a location</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="delhi">Delhi</option>
+            <option value="bangalore">Bangalore</option>
+            <option value="hyderabad">Hyderabad</option>
+        </select>
+
+        <label for="checkin">Check-in Date:</label>
+        <input type="date" id="checkin" name="checkin" required>
+
+        <label for="checkout">Check-out Date:</label>
+        <input type="date" id="checkout" name="checkout" required>
+
+        <label for="nights">Number of Nights:</label>
+        <input type="text" id="nights" name="nights" required>
+
+        <label for="roomtype">Room Type:</label>
+        <select id="roomtype" name="roomtype" required>
+            <option value="">Select a room type</option>
+            <option value="standard">Standard</option>
+            <option value="deluxe">Deluxe</option>
+            <option value="suite">Suite</option>
+        </select>
+
+        <input type="submit" value="Submit Reservation">
+    </form>
+</div>
+
+<script>
+    document.getElementById("reservation-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        // You can handle form submission with JavaScript, for example, sending data to a server
+        // Here, you can collect the form data and send it to a backend server for processing
+        var formData = new FormData(this);
+        var jsonData = {};
+        formData.forEach(function(value, key) {
+            jsonData[key] = value;
+        });
+        console.log(jsonData); // Just for demonstration, you can send this data to your backend
+        // After sending data to server, you can redirect user to confirmation page or display a message
+        alert("Your reservation has been submitted!");
+        // You can redirect to another page if needed
+        // window.location.href = "confirmation.html";
+    });
+</script>
+
+</body>
+</html>
